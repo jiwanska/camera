@@ -1,5 +1,10 @@
 import streamlit as st
+
 from PIL import Image
+
+st.subheader("Color to grayscale Converter")
+
+upload_image = st.file_uploader("Upload your image")
 
 with st.expander("Start Camera"):
     #start camera
@@ -14,4 +19,11 @@ if camera_image:
     gray_img = img.convert("L")
 
     #render the greyscale on the webpage
+    st.image(gray_img)
+
+if upload_image:
+    img = Image.open(upload_image)
+
+    gray_img = img.convert("L")
+
     st.image(gray_img)
